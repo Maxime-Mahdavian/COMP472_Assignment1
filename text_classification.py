@@ -8,7 +8,6 @@ from sklearn.feature_extraction.text import TfidfTransformer
 import sklearn.model_selection as model_selection
 from sklearn.naive_bayes import MultinomialNB
 import sklearn.metrics as metric
-from collections import Counter
 
 
 def get_distribution():
@@ -39,6 +38,10 @@ def prepare_datasets():
     # Tokenize words
     vectorizer = CountVectorizer()
     x = vectorizer.fit_transform(files.data)
+
+    # print(vectorizer.vocabulary_.get(u'sport'))
+    # print(vectorizer.vocabulary_.get(u'super'))
+
 
     # Transforms the occurrence counts to frequencies of word
     tf_transformer = TfidfTransformer()
@@ -74,18 +77,49 @@ def create_metrics(bayes_classifier, X_test_set, Y_test_set, files, prediction):
         print(key + ": " + str(dist[key] / num_files))
 
     print("f) " + str(bayes_classifier.n_features_))
+    print("g)")
+    tokens_bussiness = get_word_tokens('BBC/business')
+    tokens_ent = get_word_tokens('BBC/entertainment')
+    tokens_pol = get_word_tokens('BBC/politics')
+    tokens_sport = get_word_tokens('BBC/sport')
+    tokens_tech = get_word_tokens('BBC/tech')
 
+    print("Businness: " + str(tokens_bussiness))
+    print("Entertainment: " + str(tokens_ent))
+    print("Politics: " + str(tokens_pol))
+    print("Sport: " + str(tokens_sport))
+    print("Tech: " + str(tokens_tech))
+
+    print("h)")
+    print(tokens_bussiness+tokens_tech+tokens_pol+tokens_sport+tokens_ent)
+
+    print("i)")
+    print("j)")
+
+    print("k)")
+    print("Sport: " + str(bayes_classifier.feature_log_prob_[1][24932]))
+    print("Super: " + str(bayes_classifier.feature_log_prob_[4][25704]))
+
+
+def get_word_tokens(path):
+    import re
+    count = 0
+
+    for filename in os.listdir(path):
+        with open(os.path.join(path, filename), 'r') as f:
+            for line in f:
+                count += len(re.findall('[^\d\W]+', line))
+
+    return count
 
 
 def main():
     plot_distribution()
     files, X_train_set, X_test_set, Y_train_set, Y_test_set = prepare_datasets()
 
-    bayes_classifier = MultinomialNB(alpha=0.0001).fit(X_train_set, Y_train_set)
+    bayes_classifier = MultinomialNB(alpha=0.9).fit(X_train_set, Y_train_set)
     prediction = bayes_classifier.predict(X_test_set)
     create_metrics(bayes_classifier, X_test_set, Y_test_set, files, prediction)
-
-
 
 
 if __name__ == "__main__":

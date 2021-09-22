@@ -1,4 +1,194 @@
 ************************************************
 a) MultinomialNB default values, try 1
 
-0.9550561797752809
+b)
+Confusion matrix
+[[0.96330275 0.         0.01834862 0.00917431 0.00917431]
+ [0.04166667 0.88888889 0.04166667 0.01388889 0.01388889]
+ [0.         0.         0.97802198 0.02197802 0.        ]
+ [0.         0.         0.         1.         0.        ]
+ [0.01333333 0.         0.         0.         0.98666667]]
+
+c) Precision, recall, F1 measure
+               precision    recall  f1-score   support
+
+     business       0.96      0.96      0.96       109
+entertainment       1.00      0.89      0.94        72
+     politics       0.95      0.98      0.96        91
+        sport       0.96      1.00      0.98        98
+         tech       0.97      0.99      0.98        75
+
+     accuracy                           0.97       445
+    macro avg       0.97      0.96      0.97       445
+ weighted avg       0.97      0.97      0.97       445
+
+d)
+Accuracy: 0.9662921348314607
+Macro-average F1: 0.9653547670750202
+Weighted-average F1: 0.9660031380088631
+e)
+tech: 0.1802247191011236
+politics: 0.18741573033707865
+sport: 0.22966292134831462
+entertainment: 0.17348314606741572
+business: 0.2292134831460674
+f) 29422
+g)
+Businness: 166868
+Entertainment: 128640
+Politics: 190208
+Sport: 170802
+Tech: 202924
+h)
+859442
+i)
+j)
+k)
+Sport: -10.250141603609215
+Super: -10.077749095373726
+*******************************************************************8
+a) MultinomialNB default values, try 2
+
+b)
+Confusion matrix
+[[0.98979592 0.         0.01020408 0.         0.        ]
+ [0.02666667 0.86666667 0.09333333 0.         0.01333333]
+ [0.02325581 0.         0.96511628 0.01162791 0.        ]
+ [0.00990099 0.         0.         0.99009901 0.        ]
+ [0.02352941 0.01176471 0.         0.02352941 0.94117647]]
+c) Precision, recall, F1 measure
+               precision    recall  f1-score   support
+
+     business       0.93      0.99      0.96        98
+entertainment       0.98      0.87      0.92        75
+     politics       0.91      0.97      0.94        86
+        sport       0.97      0.99      0.98       101
+         tech       0.99      0.94      0.96        85
+
+     accuracy                           0.96       445
+    macro avg       0.96      0.95      0.95       445
+ weighted avg       0.96      0.96      0.95       445
+
+d)
+Accuracy: 0.9550561797752809
+Macro-average F1: 0.9528965082201845
+Weighted-average F1: 0.9547650201562923
+e)
+tech: 0.1802247191011236
+politics: 0.18741573033707865
+sport: 0.22966292134831462
+entertainment: 0.17348314606741572
+business: 0.2292134831460674
+f) 29422
+g)
+Businness: 166868
+Entertainment: 128640
+Politics: 190208
+Sport: 170802
+Tech: 202924
+h)
+859442
+i)
+j)
+k)
+Sport: -10.215789735437598
+Super: -9.985622739565757
+
+***************************************************************************
+a) MultinomialNB smoothing to 0.0001
+
+b)
+Confusion matrix
+[[0.96039604 0.         0.02970297 0.         0.00990099]
+ [0.         0.98333333 0.01666667 0.         0.        ]
+ [0.         0.         1.         0.         0.        ]
+ [0.         0.         0.00869565 0.99130435 0.        ]
+ [0.         0.         0.         0.         1.        ]]
+
+c) Precision, recall, F1 measure
+               precision    recall  f1-score   support
+
+     business       1.00      0.96      0.98       101
+entertainment       1.00      0.98      0.99        60
+     politics       0.94      1.00      0.97        83
+        sport       1.00      0.99      1.00       115
+         tech       0.99      1.00      0.99        86
+
+     accuracy                           0.99       445
+    macro avg       0.99      0.99      0.99       445
+ weighted avg       0.99      0.99      0.99       445
+
+d)
+Accuracy: 0.9865168539325843
+Macro-average F1: 0.9864015386647373
+Weighted-average F1: 0.9865824729470231
+e)
+tech: 0.1802247191011236
+politics: 0.18741573033707865
+sport: 0.22966292134831462
+entertainment: 0.17348314606741572
+business: 0.2292134831460674
+f) 29422
+g)
+Businness: 166868
+Entertainment: 128640
+Politics: 190208
+Sport: 170802
+Tech: 202924
+h)
+859442
+i)
+j)
+k)
+Sport: -9.7680073760219
+Super: -8.899803959782881
+
+**********************************************************88
+a) Multinomial smoothing 0.9
+
+b)
+Confusion matrix
+[[0.98076923 0.         0.00961538 0.         0.00961538]
+ [0.02298851 0.83908046 0.06896552 0.03448276 0.03448276]
+ [0.01315789 0.         0.96052632 0.01315789 0.01315789]
+ [0.00943396 0.         0.         0.99056604 0.        ]
+ [0.01388889 0.         0.         0.01388889 0.97222222]]
+c) Precision, recall, F1 measure
+               precision    recall  f1-score   support
+
+     business       0.95      0.98      0.97       104
+entertainment       1.00      0.84      0.91        87
+     politics       0.91      0.96      0.94        76
+        sport       0.95      0.99      0.97       106
+         tech       0.93      0.97      0.95        72
+
+     accuracy                           0.95       445
+    macro avg       0.95      0.95      0.95       445
+ weighted avg       0.95      0.95      0.95       445
+
+d)
+Accuracy: 0.950561797752809
+Macro-average F1: 0.9479650510100747
+Weighted-average F1: 0.9498706792996958
+e)
+tech: 0.1802247191011236
+politics: 0.18741573033707865
+sport: 0.22966292134831462
+entertainment: 0.17348314606741572
+business: 0.2292134831460674
+f) 29422
+g)
+Businness: 166868
+Entertainment: 128640
+Politics: 190208
+Sport: 170802
+Tech: 202924
+h)
+859442
+i)
+j)
+k)
+Sport: -10.206937919475772
+Super: -10.060085694541891
+
+
