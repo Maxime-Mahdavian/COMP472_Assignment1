@@ -1,0 +1,17 @@
+a)
+Here, accuracy is best suited for this dataset. This is because every class is equally important. Every genre is equally
+important, there isn't a particular one that is more important to get right than the other four.
+Also, the data is well distributed. The difference between the most and the least represented class is around 100, which is
+quite low when the dataset has more than 2000 entries. This means that every class is well represented in the algorithm
+and thus the accuracy is well suited to evaluate the performance of the algorithm.
+
+b)
+It's normal that the performance of the machine learning algorithm depending on the smoothing value, since it is the purpose
+of smoothing the value. Even without changing the smoothing value, the performance can change. From my experience, running
+my code a couple dozen times while I was writing the assignment, the performance varied from 92% to 95%. However, the
+performance is mostly around 94%. This can be due to how the dataset can be split in slightly different ways in every run,
+which can affect the performance of the algorithm.
+The smoothing value of 0.0001 was better than 0.9. The former provided around 2% to 4% improvement. The smoothing value of
+0.9 provided negligible performance improvement, which is not very surprising since the default smoothing value is 1.
+It seems that in this case, a high smoothing values bumps the probability of inconsequential words too much which confuses
+the algorithm.

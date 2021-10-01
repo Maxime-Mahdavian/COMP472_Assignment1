@@ -1,5 +1,6 @@
 import sys
 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import sklearn.model_selection as model_selection
@@ -7,6 +8,15 @@ from sklearn.naive_bayes import GaussianNB
 import sklearn.tree as tree
 import sklearn.metrics as metric
 from pandas.api.types import CategoricalDtype
+from sklearn.model_selection import GridSearchCV
+from sklearn import svm
+from sklearn.linear_model import Perceptron
+from sklearn.neural_network import MLPClassifier
+
+i = 1
+accuracy = list()
+macroF1 = list()
+weightedF1 = list()
 
 def plot_distribution(drugs):
     drug_distribution = {"drugA": 0, "drugB": 0, "drugC": 0, "drugX": 0, "drugY": 0}
@@ -19,12 +29,35 @@ def plot_distribution(drugs):
     plt.savefig("drug-distribution.pdf")
 
 
+def create_metrics(clf, X_train, X_test, Y_train, Y_test, prediction):
+    target = ('drugA', 'drugB', 'drugC', 'drugX', 'drugY')
+    global i
+    name = 'confusion-matrix' + str(i) + ".pdf"
+    i += 1
+    disp = metric.ConfusionMatrixDisplay.from_predictions(Y_test, prediction, display_labels=target,
+                                                          normalize='true')
+    print("b) \nConfusion matrix")
+    disp.plot()
+    plt.savefig(name)
+    # print(plt.show())
+    print("c) Precision, recall, F1 measure")
+    print(metric.classification_report(Y_test, prediction, target_names=target))
+    print("d)")
+    print('Accuracy: ' + str(metric.accuracy_score(Y_test, prediction)))
+    accuracy.append(metric.accuracy_score(Y_test, prediction))
+    print('Macro-average F1: ' + str(metric.f1_score(Y_test, prediction, average='macro')))
+    macroF1.append(metric.f1_score(Y_test, prediction, average='macro'))
+    print('Weighted-average F1: ' + str(metric.f1_score(Y_test, prediction, average='weighted')))
+    weightedF1.append(metric.f1_score(Y_test, prediction, average='weighted'))
+    print("-------------------------------------------------------------------------------------")
+
+
 def main():
     drugs = pd.read_csv(r'drug200.csv')
 
     plot_distribution(drugs)
 
-    drugs_dtype = CategoricalDtype(categories=['drugA','drugB','drugC','drugX','drugY'], ordered=False)
+    drugs_dtype = CategoricalDtype(categories=['drugA', 'drugB', 'drugC', 'drugX', 'drugY'], ordered=False)
     encoded_drugs = drugs.Drug.astype(drugs_dtype).cat.codes
     encoded_sex = drugs.Sex.astype("category").cat.codes
     bp_dtype = CategoricalDtype(categories=['LOW', 'NORMAL', 'HIGH'], ordered=True)
@@ -37,28 +70,58 @@ def main():
         columns=['Age', 'sex', 'BP', 'Cholestoerol', 'Na_to_K', 'Drug'])
     # print(table)
 
-    test = pd.get_dummies(drugs)
-    print(test)
+    target = table.iloc[:, 5]
+    attributes = table.iloc[:, 0:5]
 
-    X_train_set, X_test_set, Y_train_set, Y_test_set = model_selection.train_test_split(table, encoded_drugs)
+    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(attributes, target)
 
+    # for x in range(10):
+    gaussianNB = GaussianNB().fit(X_train, Y_train)
+    gaussianNB_prediction = gaussianNB.predict(X_test)
+    print("Gaussian")
+    create_metrics(gaussianNB, X_train, X_test, Y_train, Y_test, gaussianNB_prediction)
 
-    #print(X_test_set)
-    # print("X_TEST_SET")
-    # print(Y_train_set)
-    # print("888888888888888888888888888888888")
-    # print(Y_train_set)
-    # print("888888888888888888888888888888888")
-    # print(Y_test_set)
+    baseDt = tree.DecisionTreeClassifier().fit(X_train, Y_train)
+    baseDt_prediction = baseDt.predict(X_test)
+    print("Base-DT")
+    create_metrics(baseDt, X_train, X_test, Y_train, Y_test, baseDt_prediction)
 
-    # gaussianNB = GaussianNB().fit(X_train_set, Y_train_set)
-    # gaussianNB_prediction = gaussianNB.predict(X_test_set)
-    # print(metric.accuracy_score(Y_test_set, gaussianNB_prediction))
+    dt_parameters = {'criterion': ['gini', 'entropy'], 'max_depth': [4, 6], 'min_samples_split': [3, 5, 7]}
+    grid = GridSearchCV(baseDt, dt_parameters)
+    grid = grid.fit(X_train, Y_train)
+    grid_prediction = grid.predict(X_test)
+    print("Top-DT")
+    print("Best parameters")
+    print(grid.best_params_)
+    # print(metric.accuracy_score(Y_test, grid_prediction))
+    create_metrics(grid, X_train, X_test, Y_train, Y_test, grid_prediction)
 
-    # baseDt = tree.DecisionTreeClassifier().fit(X_train_set, Y_train_set)
-    # baseDt_prediction = baseDt.predict(X_test_set)
-    # print(metric.accuracy_score(Y_test_set, baseDt_prediction))
+    per = Perceptron().fit(X_train, Y_train)
+    per_prediction = per.predict(X_test)
+    print("Perceptron")
+    # print(metric.accuracy_score(Y_test, per_prediction))
+    create_metrics(per, X_train, X_test, Y_train, Y_test, per_prediction)
 
+    mlp = MLPClassifier(hidden_layer_sizes=(100), activation='logistic', solver='sgd').fit(X_train, Y_train)
+    mlp_prediction = mlp.predict(X_test)
+    print("MLP")
+    # print(metric.accuracy_score(Y_test, mlp_prediction))
+    create_metrics(mlp, X_train, X_test, Y_train, Y_test, mlp_prediction)
+
+    mlp_parameters = {'activation': ['logistic', 'tanh', 'relu', 'identity'],
+                      'hidden_layer_sizes': [(30, 50), (10, 10, 10)], 'solver': ['adam', 'sgd']}
+    mlp_grid = GridSearchCV(mlp, mlp_parameters, return_train_score=True)
+    mlp_grid = mlp_grid.fit(X_train, Y_train)
+    mlp_grid_prediction = mlp_grid.predict(X_test)
+    print(mlp_grid.best_params_)
+    print(metric.accuracy_score(Y_test, mlp_grid_prediction))
+
+    print(np.average(accuracy))
+    print(np.average(macroF1))
+    print(np.average(weightedF1))
+    print(np.std(accuracy))
+    print(np.std(macroF1))
+    print(np.std(weightedF1))
 
 if __name__ == "__main__":
     main()

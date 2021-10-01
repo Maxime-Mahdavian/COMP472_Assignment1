@@ -3,35 +3,31 @@ a) MultinomialNB default values, try 1
 
 b)
 Confusion matrix
-[[0.96330275 0.         0.01834862 0.00917431 0.00917431]
- [0.04166667 0.88888889 0.04166667 0.01388889 0.01388889]
- [0.         0.         0.97802198 0.02197802 0.        ]
- [0.         0.         0.         1.         0.        ]
- [0.01333333 0.         0.         0.         0.98666667]]
-
+NOTE: I had difficulty making this work because the function in the assignment handout is deprecated as in python 3.9,
+which is the version on my computer. Instead, the confusion matrix is on the file called confusion-matrix-try1.pdf
 c) Precision, recall, F1 measure
                precision    recall  f1-score   support
 
-     business       0.96      0.96      0.96       109
-entertainment       1.00      0.89      0.94        72
-     politics       0.95      0.98      0.96        91
-        sport       0.96      1.00      0.98        98
-         tech       0.97      0.99      0.98        75
+     business       0.95      0.96      0.95       110
+entertainment       0.97      0.82      0.89        74
+     politics       0.89      0.97      0.93        77
+        sport       0.97      0.99      0.98       110
+         tech       0.93      0.93      0.93        74
 
-     accuracy                           0.97       445
-    macro avg       0.97      0.96      0.97       445
- weighted avg       0.97      0.97      0.97       445
+     accuracy                           0.94       445
+    macro avg       0.94      0.94      0.94       445
+ weighted avg       0.95      0.94      0.94       445
 
 d)
-Accuracy: 0.9662921348314607
-Macro-average F1: 0.9653547670750202
-Weighted-average F1: 0.9660031380088631
+Accuracy: 0.9438202247191011
+Macro-average F1: 0.9383114673816039
+Weighted-average F1: 0.9431460757681432
 e)
-tech: 0.1802247191011236
+business: 0.2292134831460674
+entertainment: 0.17348314606741572
 politics: 0.18741573033707865
 sport: 0.22966292134831462
-entertainment: 0.17348314606741572
-business: 0.2292134831460674
+tech: 0.1802247191011236
 f) 29422
 g)
 Businness: 166868
@@ -42,140 +38,47 @@ Tech: 202924
 h)
 859442
 i)
+Business: 18932, 0.6434640745020733%
+Entertainment: 18777, 0.6381959078240772%
+Politics: 19268, 0.6548841003330841%
+Sport: 19979, 0.6790496907076338%
+Tech: 18213, 0.6190265787505947%
 j)
+10006
 k)
-Sport: -10.250141603609215
-Super: -10.077749095373726
-*******************************************************************8
+Sport: -10.217335220458773
+Super: -9.95094354451887
+
+**************************************************************************
 a) MultinomialNB default values, try 2
 
 b)
 Confusion matrix
-[[0.98979592 0.         0.01020408 0.         0.        ]
- [0.02666667 0.86666667 0.09333333 0.         0.01333333]
- [0.02325581 0.         0.96511628 0.01162791 0.        ]
- [0.00990099 0.         0.         0.99009901 0.        ]
- [0.02352941 0.01176471 0.         0.02352941 0.94117647]]
+NOTE: I had difficulty making this work because the function in the assignment handout is deprecated as in python 3.9,
+which is the version on my computer. Instead, the confusion matrix is on the file called confusion-matrix-try2.pdf
 c) Precision, recall, F1 measure
                precision    recall  f1-score   support
 
-     business       0.93      0.99      0.96        98
-entertainment       0.98      0.87      0.92        75
-     politics       0.91      0.97      0.94        86
-        sport       0.97      0.99      0.98       101
-         tech       0.99      0.94      0.96        85
-
-     accuracy                           0.96       445
-    macro avg       0.96      0.95      0.95       445
- weighted avg       0.96      0.96      0.95       445
-
-d)
-Accuracy: 0.9550561797752809
-Macro-average F1: 0.9528965082201845
-Weighted-average F1: 0.9547650201562923
-e)
-tech: 0.1802247191011236
-politics: 0.18741573033707865
-sport: 0.22966292134831462
-entertainment: 0.17348314606741572
-business: 0.2292134831460674
-f) 29422
-g)
-Businness: 166868
-Entertainment: 128640
-Politics: 190208
-Sport: 170802
-Tech: 202924
-h)
-859442
-i)
-j)
-k)
-Sport: -10.215789735437598
-Super: -9.985622739565757
-
-***************************************************************************
-a) MultinomialNB smoothing to 0.0001
-
-b)
-Confusion matrix
-[[0.96039604 0.         0.02970297 0.         0.00990099]
- [0.         0.98333333 0.01666667 0.         0.        ]
- [0.         0.         1.         0.         0.        ]
- [0.         0.         0.00869565 0.99130435 0.        ]
- [0.         0.         0.         0.         1.        ]]
-
-c) Precision, recall, F1 measure
-               precision    recall  f1-score   support
-
-     business       1.00      0.96      0.98       101
-entertainment       1.00      0.98      0.99        60
-     politics       0.94      1.00      0.97        83
-        sport       1.00      0.99      1.00       115
-         tech       0.99      1.00      0.99        86
-
-     accuracy                           0.99       445
-    macro avg       0.99      0.99      0.99       445
- weighted avg       0.99      0.99      0.99       445
-
-d)
-Accuracy: 0.9865168539325843
-Macro-average F1: 0.9864015386647373
-Weighted-average F1: 0.9865824729470231
-e)
-tech: 0.1802247191011236
-politics: 0.18741573033707865
-sport: 0.22966292134831462
-entertainment: 0.17348314606741572
-business: 0.2292134831460674
-f) 29422
-g)
-Businness: 166868
-Entertainment: 128640
-Politics: 190208
-Sport: 170802
-Tech: 202924
-h)
-859442
-i)
-j)
-k)
-Sport: -9.7680073760219
-Super: -8.899803959782881
-
-**********************************************************88
-a) Multinomial smoothing 0.9
-
-b)
-Confusion matrix
-[[0.98076923 0.         0.00961538 0.         0.00961538]
- [0.02298851 0.83908046 0.06896552 0.03448276 0.03448276]
- [0.01315789 0.         0.96052632 0.01315789 0.01315789]
- [0.00943396 0.         0.         0.99056604 0.        ]
- [0.01388889 0.         0.         0.01388889 0.97222222]]
-c) Precision, recall, F1 measure
-               precision    recall  f1-score   support
-
-     business       0.95      0.98      0.97       104
-entertainment       1.00      0.84      0.91        87
-     politics       0.91      0.96      0.94        76
-        sport       0.95      0.99      0.97       106
-         tech       0.93      0.97      0.95        72
+     business       0.98      0.98      0.98       100
+entertainment       1.00      0.83      0.91        75
+     politics       0.85      0.99      0.91        75
+        sport       0.95      1.00      0.97       109
+         tech       0.98      0.92      0.95        86
 
      accuracy                           0.95       445
-    macro avg       0.95      0.95      0.95       445
+    macro avg       0.95      0.94      0.94       445
  weighted avg       0.95      0.95      0.95       445
 
 d)
-Accuracy: 0.950561797752809
-Macro-average F1: 0.9479650510100747
-Weighted-average F1: 0.9498706792996958
+Accuracy: 0.9483146067415731
+Macro-average F1: 0.9436023612220197
+Weighted-average F1: 0.9479715883174956
 e)
-tech: 0.1802247191011236
+business: 0.2292134831460674
+entertainment: 0.17348314606741572
 politics: 0.18741573033707865
 sport: 0.22966292134831462
-entertainment: 0.17348314606741572
-business: 0.2292134831460674
+tech: 0.1802247191011236
 f) 29422
 g)
 Businness: 166868
@@ -186,9 +89,118 @@ Tech: 202924
 h)
 859442
 i)
+Business: 18690, 0.6352389368499762%
+Entertainment: 19037, 0.6470328325742641%
+Politics: 19116, 0.6497178981714363%
+Sport: 19995, 0.6795935014614914%
+Tech: 18537, 0.6300387465162124%
 j)
+10006
 k)
-Sport: -10.206937919475772
-Super: -10.060085694541891
+Sport: -10.248455311611114
+Super: -10.056959912704183
+
+***********************************************************************
+a) MultinomialNB smoothing value of 0.0001
+
+b)
+Confusion matrix
+NOTE: I had difficulty making this work because the function in the assignment handout is deprecated as in python 3.9,
+which is the version on my computer. Instead, the confusion matrix is on the file called confusion-matrix00001.pdf
+c) Precision, recall, F1 measure
+               precision    recall  f1-score   support
+
+     business       0.99      0.97      0.98        97
+entertainment       1.00      0.93      0.96        85
+     politics       0.98      1.00      0.99        90
+        sport       1.00      1.00      1.00        93
+         tech       0.92      0.99      0.95        80
+
+     accuracy                           0.98       445
+    macro avg       0.98      0.98      0.98       445
+ weighted avg       0.98      0.98      0.98       445
+
+d)
+Accuracy: 0.9775280898876404
+Macro-average F1: 0.976679903747932
+Weighted-average F1: 0.9775842199850511
+e)
+business: 0.2292134831460674
+entertainment: 0.17348314606741572
+politics: 0.18741573033707865
+sport: 0.22966292134831462
+tech: 0.1802247191011236
+f) 29422
+g)
+Businness: 166868
+Entertainment: 128640
+Politics: 190208
+Sport: 170802
+Tech: 202924
+h)
+859442
+i)
+Business: 18626, 0.6330636938345455%
+Entertainment: 19192, 0.6523009992522603%
+Politics: 19398, 0.6593025627081776%
+Sport: 19696, 0.6694310379987765%
+Tech: 18169, 0.6175310991774863%
+j)
+10006
+k)
+Sport: -9.68614976691059
+Super: -8.836136490955557
+
+
+***********************************************************************
+a) MultinomialNB smoothing value of 0.9
+
+b)
+Confusion matrix
+NOTE: I had difficulty making this work because the function in the assignment handout is deprecated as in python 3.9,
+which is the version on my computer. Instead, the confusion matrix is on the file called confusion-matrix09.pdf
+c) Precision, recall, F1 measure
+               precision    recall  f1-score   support
+
+     business       0.95      0.99      0.97        95
+entertainment       0.98      0.85      0.91        74
+     politics       0.98      0.95      0.96       100
+        sport       0.99      1.00      1.00       114
+         tech       0.87      0.98      0.92        62
+
+     accuracy                           0.96       445
+    macro avg       0.96      0.95      0.95       445
+ weighted avg       0.96      0.96      0.96       445
+
+d)
+Accuracy: 0.9595505617977528
+Macro-average F1: 0.9532916520601631
+Weighted-average F1: 0.9592786230970011
+e)
+business: 0.2292134831460674
+entertainment: 0.17348314606741572
+politics: 0.18741573033707865
+sport: 0.22966292134831462
+tech: 0.1802247191011236
+f) 29422
+g)
+Businness: 166868
+Entertainment: 128640
+Politics: 190208
+Sport: 170802
+Tech: 202924
+h)
+859442
+i)
+Business: 18767, 0.6378560261029161%
+Entertainment: 18836, 0.6402012099789274%
+Politics: 19220, 0.6532526680715112%
+Sport: 19968, 0.6786758208143566%
+Tech: 17972, 0.6108354292706138%
+j)
+10006
+k)
+Sport: -10.21052963101681
+Super: -10.009059610617788
 
 
