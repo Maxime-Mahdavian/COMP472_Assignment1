@@ -1,0 +1,15 @@
+Here, the distribution of the classes are widely disproportionate, having way more instances of drugY than any other.
+At the same time, there are very little instances of the drug C. This means that accuracy is not the best metric for this
+situation. Instead, precision, recall or F1 measure are much better for this dataset.
+
+The performance of the different classifiers varies depending on runs and different classifiers.
+The first three, the gaussian and both decision trees,  are the simplest to analyze. They are very good overall, providing
+very good precisions, recall and F1 values. They also don't change a lot per runs.
+The last three are more complicated. The main reason is that the last three have issues where the classifiers don't pick
+the drugs A,B and C in favor or X or Y. This is especially true of the perceptron and base mlp. The perceptron will sometimes
+make better predictions and pick the drugs A,B and C. However, the base mlp is always pretty bad. The top-mlp with the best
+classifiers is much better than the "default" one in the assignment. With this one, it rarely predicts drugs C though, only about
+1 out of 5 times. Obviously, the precision, recall and F1 score are affected by this and tend to vary wildly depending if the
+classifier picks the drugs or not.
+It's normal that the performance varies, since the training set differs from run to run, which can affect the performance
+of the classifier.
