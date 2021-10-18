@@ -1,7 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
 import os, os.path
-import sklearn as sk
 from sklearn.datasets import load_files
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
